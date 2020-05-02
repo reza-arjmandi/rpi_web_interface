@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {action} from '@storybook/addon-actions';
-import AddNewLogDialog from './AddNewLogDialog';
+import AddNewLogDialog from '../components/AddNewLogDialog';
 
 export default {
     component: AddNewLogDialog,

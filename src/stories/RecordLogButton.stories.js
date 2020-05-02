@@ -1,6 +1,6 @@
 import React from 'react';
 
-import RecordLogButton from './RecordLogButton';
+import RecordLogButton from '../components/RecordLogButton';
 
 export default {
     component: RecordLogButton,

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import LogDialogTextField from './LogDialogTextField';
+import LogDialogTextField from '../components/LogDialogTextField';
 
 export default {
     component: LogDialogTextField,

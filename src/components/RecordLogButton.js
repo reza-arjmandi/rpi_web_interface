@@ -22,7 +22,10 @@ export default function RecordLogButton({is_record_started}) {
         color={is_record_started ? "secondary" : "default"} 
         size="large"
         className={classes.button}
-        startIcon={is_record_started ? <StopIcon /> : <FiberManualRecordIcon color="secondary" />}
+        startIcon={
+          is_record_started 
+          ? <StopIcon /> 
+          : <FiberManualRecordIcon color="secondary" />}
       >
         {is_record_started ? "Stop Recording" : "Start Recording"}
       </Button>

@@ -21,21 +21,43 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const menu_button = (classes) => {
+  return (
+    <IconButton 
+      edge="start" 
+      className={classes.menuButton} 
+      color="inherit" 
+      aria-label="menu">
+        <MenuIcon />
+    </IconButton>
+  );
+};
+
+const app_title = (classes) => {
+  return (
+    <Typography variant="h6" className={classes.title}>
+      Serial Port Logger 
+    </Typography>
+  );
+};
+
+const toolbar = (classes, is_record_started) => {
+  return (
+    <Toolbar>
+      {menu_button(classes)}
+      {app_title(classes)}
+      <RecordLogButton is_record_started={is_record_started} />
+    </Toolbar>
+  );
+}
+
 export default function ButtonAppBar({is_record_started}) {
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
       <AppBar position="static">
-        <Toolbar>
-          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" className={classes.title}>
-            Serial Port Logger 
-          </Typography>
-          <RecordLogButton is_record_started={is_record_started} />
-        </Toolbar>
+        {toolbar(classes, is_record_started)}
       </AppBar>
     </div>
   );

@@ -1,7 +1,8 @@
 import React from 'react';
 
-import ButtonAppBar from './ButtonAppBar';
-import {record_started_data, record_not_started_data} from './RecordLogButton.stories';
+import ButtonAppBar from '../components/ButtonAppBar';
+import {record_started_data} from './RecordLogButton.stories';
+import {record_not_started_data} from './RecordLogButton.stories';
 
 export default {
     component: ButtonAppBar,

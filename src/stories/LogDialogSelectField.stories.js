@@ -1,7 +1,7 @@
 import React from 'react';
 import {action} from '@storybook/addon-actions';
 
-import LogDialogSelectField from './LogDialogSelectField';
+import LogDialogSelectField from '../components/LogDialogSelectField';
 
 export default {
     component: LogDialogSelectField,

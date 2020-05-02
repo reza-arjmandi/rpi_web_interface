@@ -1,7 +1,7 @@
 import React from 'react';
 import { action } from '@storybook/addon-actions';
 
-import AddLogButton from './AddLogButton';
+import AddLogButton from '../components/AddLogButton';
 
 export default {
     component: AddLogButton,
