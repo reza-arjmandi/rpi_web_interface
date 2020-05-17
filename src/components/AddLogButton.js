@@ -14,6 +14,11 @@ const useStyles = makeStyles((theme) => ({
   extendedIcon: {
     marginRight: theme.spacing(1),
   },
+  fab: {
+    position: 'absolute',
+    bottom: theme.spacing(2),
+    right: theme.spacing(2),
+  },
 }));
 
 export default function AddLogButton({onAddLog}) {
@@ -23,7 +28,8 @@ export default function AddLogButton({onAddLog}) {
         <Fab 
         variant="extended" 
         color="primary"
-        onClick={() => onAddLog()}>
+        onClick={() => onAddLog()}
+        className={classes.fab}>
           <AddIcon className={classes.extendedIcon} />
           Add Log
       </Fab>
