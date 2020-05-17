@@ -11,6 +11,7 @@ export default {
 
 export const action_data = {
     on_close : action('on_close'),
+    add_new_log : action('add_new_log'),
 };
 
 export const add_new_log_dialog_data = {

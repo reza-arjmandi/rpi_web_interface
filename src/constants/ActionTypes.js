@@ -1,1 +1,3 @@
-export const ADD_LOG = 'ADD_LOG';
+export const OPEN_ADD_NEW_LOG_DIALOG = 'OPEN_ADD_NEW_LOG_DIALOG';
+export const CLOSE_ADD_NEW_LOG_DIALOG = 'CLOSE_ADD_NEW_LOG_DIALOG';
+export const ADD_NEW_LOG = 'ADD_NEW_LOG';

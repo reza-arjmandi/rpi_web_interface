@@ -54,7 +54,7 @@ const dialog_content = () => {
   );
 };
 
-export default function AddNewLogDialog({ on_close, open }) {
+export default function AddNewLogDialog({ on_close, open, add_new_log }) {
   const classes = useStyles();
   return (
     <div className={classes.root}>
@@ -73,4 +73,5 @@ export default function AddNewLogDialog({ on_close, open }) {
 AddNewLogDialog.propTypes = {
   on_close: PropTypes.func.isRequired,
   open: PropTypes.bool.isRequired,
+  add_new_log: PropTypes.func.isRequired,
 };
