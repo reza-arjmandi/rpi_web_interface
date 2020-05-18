@@ -22,13 +22,13 @@ export default function LogCardsGrid({cards}) {
   return (
     <div className={classes.root}>
       <Grid container spacing={3}>
-      {cards.map((card) => {
+      {cards ? cards.map((card) => {
         return(
             <Grid item xs={3}>
                 <LogCard className={classes.card} {...card} />
             </Grid>
         );
-      })}
+      }) : null}
       </Grid>
     </div>
   );

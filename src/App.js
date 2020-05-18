@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 
 import ButtonAppBar from './components/ButtonAppBar';
-import LogCardsGrid from './components/LogCardsGrid';
+import LogCardsTable from './containers/LogCardsTable';
 import AddLogButton from './containers/AddLogButton';
 import AddNewLogDialog from './containers/AddNewLogDialog';
 
@@ -12,7 +12,7 @@ function App() {
     <div>
       <ButtonAppBar />
       <AddNewLogDialog />
-      <LogCardsGrid cards={[]} />
+      <LogCardsTable />
       <AddLogButton />
     </div>
   );

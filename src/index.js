@@ -1,17 +1,25 @@
 import React from 'react';
+import thunkMiddleware from 'redux-thunk'
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import 'typeface-roboto';
 
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux';
 
 import reducer from './reducers';
 
-const store = createStore(reducer);
+import { fetch_logs } from './api';
 
+const store = createStore(
+  reducer,
+  applyMiddleware(
+    thunkMiddleware
+));
+
+store.dispatch(fetch_logs());
 
 ReactDOM.render(
   <React.StrictMode>
