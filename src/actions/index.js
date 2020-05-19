@@ -26,3 +26,7 @@ export const fetch_logs_success = (response) => ({
     type: types.FETCH_LOGS_SUCCESS,
     response
 });
+
+export const close_notification = () => ({
+    type: types.CLOSE_NOTIFICATION,
+});

@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { makeStyles } from '@material-ui/core/styles';
+import LinearProgress from '@material-ui/core/LinearProgress';
 import Grid from '@material-ui/core/Grid';
 import LogCard from './LogCard';
 
@@ -17,8 +18,17 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function LogCardsGrid({cards}) {
+export default function LogCardsGrid({ is_fetching, cards }) {
   const classes = useStyles();
+
+  if(is_fetching) {
+    return (
+      <div className={classes.root}>
+        <LinearProgress />
+      </div>
+    )
+  }
+
   return (
     <div className={classes.root}>
       <Grid container spacing={3}>
