@@ -8,7 +8,6 @@ export default function Logs(state=[], action) {
         case FETCH_LOGS_SUCCESS:
             return action.response.cards;
         case FETCH_LOGS_FAILURE:
-            return state;
         default:
             return state;
     }

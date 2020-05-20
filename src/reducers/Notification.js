@@ -15,13 +15,13 @@ export default function Notification(state=initial_state, action) {
         case FETCH_LOGS_FAILURE:
             return {
                 open: true, 
-                message: 'Fetcing of logs failed, refresh the page', 
+                message: `Fetching of logs failed, ${action.error}`, 
                 type:'error'
             };
         case FETCH_LOGS_SUCCESS:
             return {
                 open: true, 
-                message: 'Fetcing of logs successed', 
+                message: 'Fetching of logs succeeded', 
                 type:'success'
             };
         case CLOSE_NOTIFICATION:

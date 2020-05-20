@@ -10,7 +10,7 @@ export function fetch_logs() {
   
       dispatch(fetch_logs_request())
   
-      return fetch('https://google.io/logs')
+      return fetch('https://eaba0047-a89a-4dac-8936-ace33835759c.mock.pstmn.io/logs')
         .then(
           response => response.json()
         )
