@@ -1,6 +1,7 @@
 import React from 'react';
 
 import NewDeviceInfoPage from '../components/NewDeviceInfoPage';
+import { action_data } from './LogDialogTextField.stories';
 
 export default {
     component: NewDeviceInfoPage,
@@ -8,5 +9,5 @@ export default {
 };
 
 export const Default = () => {
-    return <NewDeviceInfoPage />;
+    return <NewDeviceInfoPage {...action_data} />;
 };

@@ -1,5 +1,7 @@
 import React from 'react';
 
+import {action} from '@storybook/addon-actions';
+
 import LogDialogTextField from '../components/LogDialogTextField';
 
 export default {
@@ -13,6 +15,10 @@ export const text_field_data = {
     label: "this is label",
 };
 
+export const action_data = {
+    on_value_change : action('on_value_change'),
+};
+
 export const Default = () => {
-    return <LogDialogTextField {...text_field_data} />
+    return <LogDialogTextField {...text_field_data} {...action_data} />
 }

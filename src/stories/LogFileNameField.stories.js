@@ -1,6 +1,7 @@
 import React from 'react';
 
 import LogFileNameField from '../components/LogFileNameField';
+import { action_data } from './LogDialogTextField.stories';
 
 export default {
     component: LogFileNameField,
@@ -8,5 +9,5 @@ export default {
 };
 
 export const Default = () => {
-    return <LogFileNameField />;
+    return <LogFileNameField {...action_data} />;
 };

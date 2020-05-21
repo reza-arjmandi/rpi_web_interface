@@ -7,13 +7,15 @@ import {
     fetch_recording_status_failure,
 } from '../actions';
 
+const api_address = 'https://eaba0047-a89a-4dac-8936-ace33835759c.mock.pstmn.io';
+
 export function fetch_logs() {
   
     return function (dispatch) {
   
       dispatch(fetch_logs_request())
   
-      return fetch('https://eaba0047-a89a-4dac-8936-ace33835759c.mock.pstmn.io/logs')
+      return fetch(`${api_address}/logs`)
         .then(
           response => response.json()
         )
@@ -31,7 +33,7 @@ export function fetch_recording_status() {
 
     dispatch(fetch_recording_status_request())
 
-    return fetch('https://eaba0047-a89a-4dac-8936-ace33835759c.mock.pstmn.io/recording_status')
+    return fetch(`${api_address}/recording_status`)
       .then(
         response => response.json()
       )

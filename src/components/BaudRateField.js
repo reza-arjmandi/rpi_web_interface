@@ -2,11 +2,16 @@ import React from 'react';
 
 import LogDialogSelectField from './LogDialogSelectField'
 
-export default function BaudRateField(){
+export default function BaudRateField({ on_value_change }){
     const [baud_rate, set_baud_rate] = React.useState(9600);
+    const id = "baud_rate";
 
     const handle_baud_rate_change = (value) => {
         set_baud_rate(value);
+        on_value_change({
+            id,
+            value,
+        });
     };
 
     const baud_rates = [
@@ -15,7 +20,7 @@ export default function BaudRateField(){
     ];
 
     return <LogDialogSelectField
-      id="baud_rate"
+      id={id}
       label="Baud Rate"
       value={baud_rate}
       on_change={handle_baud_rate_change}

@@ -2,11 +2,15 @@ import React from 'react';
 
 import LogDialogSelectField from './LogDialogSelectField';
 
-export default function ParityField() {
+export default function ParityField({ on_value_change }) {
     const [parity, set_parity] = React.useState('none');
-
+    const id = "parity";
     const handle_parity_change = (value) => {
         set_parity(value);
+        on_value_change({
+            id,
+            value,
+        });
     };
 
     const parities = [
@@ -14,7 +18,7 @@ export default function ParityField() {
     ];
 
     return <LogDialogSelectField
-      id="parity"
+      id={id}
       label="Parity"
       value={parity}
       on_change={handle_parity_change}

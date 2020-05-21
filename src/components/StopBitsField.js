@@ -2,11 +2,15 @@ import React from 'react';
 
 import LogDialogSelectField from './LogDialogSelectField';
 
-export default function StopBitsField() {
+export default function StopBitsField({ on_value_change }) {
     const [stop_bits, set_stop_bits] = React.useState(1);
-
+    const id = "stop_bits";
     const handle_stop_bits_change = (value) => {
         set_stop_bits(value);
+        on_value_change({
+            id,
+            value,
+        });
     };
 
     const stop_bits_type = [
@@ -14,7 +18,7 @@ export default function StopBitsField() {
     ];
     
     return <LogDialogSelectField
-      id="stop_bits"
+      id={id}
       label="Stop Bits"
       value={stop_bits}
       on_change={handle_stop_bits_change}

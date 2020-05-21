@@ -1,6 +1,7 @@
 import React from 'react';
 
 import BaudRateField from '../components/BaudRateField';
+import { action_data } from './LogDialogTextField.stories';
 
 export default {
     component: BaudRateField,
@@ -8,5 +9,5 @@ export default {
 };
 
 export const Default = () => {
-    return <BaudRateField />;
+    return <BaudRateField {...action_data} />;
 };

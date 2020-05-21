@@ -1,6 +1,7 @@
 import React from 'react';
 
 import FlowControlField from '../components/FlowControlField';
+import { action_data } from './LogDialogTextField.stories';
 
 export default {
     component: FlowControlField,
@@ -8,5 +9,5 @@ export default {
 };
 
 export const Default = () => {
-    return <FlowControlField />;
+    return <FlowControlField {...action_data} />;
 };

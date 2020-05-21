@@ -1,6 +1,7 @@
 import React from 'react';
 
 import DeviceNameField from '../components/DeviceNameField';
+import { action_data } from './LogDialogTextField.stories';
 
 export default {
     component: DeviceNameField,
@@ -8,5 +9,5 @@ export default {
 };
 
 export const Default = () => {
-    return <DeviceNameField />;
+    return <DeviceNameField {...action_data}/>;
 };

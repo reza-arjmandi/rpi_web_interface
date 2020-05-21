@@ -32,30 +32,55 @@ const dialog_title = () => {
   );
 };
 
-const dialog_actions = (on_close) => {
+const dialog_actions = (on_add, on_close) => {
   return (
     <DialogActions>
       <Button onClick={on_close} color="primary">
         Cancel
       </Button>
-      <Button onClick={on_close} color="primary">
+      <Button onClick={on_add} color="primary">
         Add
       </Button>
     </DialogActions>
   );
 };
 
-const dialog_content = () => {
+const dialog_content = (on_value_change) => {
   return (
     <DialogContent>
       {dialog_content_text()}
-      <NewDeviceInfoPage />
+      <NewDeviceInfoPage on_value_change={on_value_change} />
     </DialogContent>
   );
 };
 
 export default function AddNewLogDialog({ on_close, open, add_new_log }) {
   const classes = useStyles();
+
+  var new_log = {
+    device_name: "", 
+    log_file_name: "", 
+    serial_port_driver: "",
+    baud_rate: 9600, 
+    flow_control: "none", 
+    parity: "none", 
+    stop_bits: 1, 
+    character_size: "8"
+  };
+  const on_value_change = (obj) => {
+    new_log[obj.id] = obj.value;
+  };
+
+  const on_add = (event) => {
+    if(new_log.device_name === "" 
+    || new_log.log_file_name === "" 
+    || new_log.serial_port_driver === "") {
+      return;
+    }
+    add_new_log(new_log);
+    on_close(event);
+  };
+
   return (
     <div className={classes.root}>
       <Dialog 
@@ -63,8 +88,8 @@ export default function AddNewLogDialog({ on_close, open, add_new_log }) {
         onClose={on_close} 
         aria-labelledby="form-dialog-title">
           {dialog_title()}
-          {dialog_content()}
-          {dialog_actions(on_close)}
+          {dialog_content(on_value_change)}
+          {dialog_actions(on_add, on_close)}
       </Dialog>
     </div>
   );

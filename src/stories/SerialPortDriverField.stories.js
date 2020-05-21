@@ -1,6 +1,7 @@
 import React from 'react';
 
 import SerialPortDriverField from '../components/SerialPortDriverField';
+import { action_data } from './LogDialogTextField.stories';
 
 export default {
     component: SerialPortDriverField,
@@ -8,5 +9,5 @@ export default {
 };
 
 export const Default = () => {
-    return <SerialPortDriverField />;
+    return <SerialPortDriverField {...action_data} />;
 };

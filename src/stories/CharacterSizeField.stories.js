@@ -1,6 +1,7 @@
 import React from 'react';
 
 import CharacterSizeField from '../components/CharacterSizeField';
+import { action_data } from './LogDialogTextField.stories';
 
 export default {
     component: CharacterSizeField,
@@ -8,5 +9,5 @@ export default {
 };
 
 export const Default = () => {
-    return <CharacterSizeField />;
+    return <CharacterSizeField {...action_data} />;
 };
