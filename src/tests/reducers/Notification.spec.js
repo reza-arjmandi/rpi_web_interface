@@ -1,5 +1,5 @@
-import Notification from '../reducers/Notification';
-import * as types from '../constants/ActionTypes';
+import Notification from '../../reducers/Notification';
+import * as types from '../../constants/ActionTypes';
 
 describe('Notification reducer', () => {
     it('should handle initial state', () => {
@@ -82,4 +82,26 @@ describe('Notification reducer', () => {
             }, action)
         ).toEqual(initial_state);
     })
+
+    it('should handle FETCH_RECORDING_STATUS_FAILURE', () => {
+        const action = {
+            type: types.FETCH_RECORDING_STATUS_FAILURE,
+            error: 'this is err'
+        };
+
+        const expected_result = {
+            open: true, 
+            message: `Fetching of recording status failed, ${action.error}`, 
+            type:'error'
+        };
+
+        expect(
+            Notification({
+                open: true, 
+                message: 'random message', 
+                type:'random type'
+            }, action)
+        ).toEqual(expected_result);
+    })
+
 });

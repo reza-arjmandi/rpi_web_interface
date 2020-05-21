@@ -42,4 +42,34 @@ describe('serial port logger actions', () => {
             type: types.CLOSE_NOTIFICATION,
         });
     })
+
+    it('fetch_recording_status_request should \
+create FETCH_RECORDING_STATUS_REQUEST', 
+    () => {
+        expect(actions.fetch_recording_status_request()).toEqual({
+            type: types.FETCH_RECORDING_STATUS_REQUEST,
+        });
+    })
+
+    it('fetch_recording_status_failure should careate \
+FETCH_RECORDING_STATUS_FAILURE', () => {
+        expect(actions.fetch_recording_status_failure('this is err')).toEqual({
+            type:types.FETCH_RECORDING_STATUS_FAILURE,
+            error: 'this is err'
+        })
+    })
+
+    it('fetch_recording_status_success should careate \
+FETCH_RECORDING_STATUS_SUCCESS', () => {
+        expect(actions.fetch_recording_status_success(true)).toEqual({
+            type: types.FETCH_RECORDING_STATUS_SUCCESS,
+            is_recording_started: true
+        });
+
+        expect(actions.fetch_recording_status_success(false)).toEqual({
+            type: types.FETCH_RECORDING_STATUS_SUCCESS,
+            is_recording_started: false
+        });
+    })
+
 });

@@ -1,5 +1,5 @@
-import Logs from '../reducers/Logs';
-import * as types from '../constants/ActionTypes';
+import Logs from '../../reducers/Logs';
+import * as types from '../../constants/ActionTypes';
 
 describe('Logs reducer', () => {
 

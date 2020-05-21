@@ -1,7 +1,8 @@
 import {
     FETCH_LOGS_FAILURE,
     FETCH_LOGS_SUCCESS,
-    CLOSE_NOTIFICATION
+    CLOSE_NOTIFICATION,
+    FETCH_RECORDING_STATUS_FAILURE,
 } from '../constants/ActionTypes';
 
 const initial_state = {
@@ -26,6 +27,12 @@ export default function Notification(state=initial_state, action) {
             };
         case CLOSE_NOTIFICATION:
             return initial_state;
+        case FETCH_RECORDING_STATUS_FAILURE:
+            return {
+                open: true, 
+                message: `Fetching of recording status failed, ${action.error}`, 
+                type:'error'
+            };
         default:
             return state;
     }

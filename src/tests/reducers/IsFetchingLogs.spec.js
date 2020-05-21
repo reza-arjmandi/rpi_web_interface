@@ -1,5 +1,5 @@
-import IsFetchingLogs from '../reducers/IsFetchingLogs';
-import * as types from '../constants/ActionTypes';
+import IsFetchingLogs from '../../reducers/IsFetchingLogs';
+import * as types from '../../constants/ActionTypes';
 
 describe('IsFetchingLogs reducer', () => {
 

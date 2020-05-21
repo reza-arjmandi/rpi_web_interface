@@ -26,6 +26,20 @@ export const close_notification = () => ({
     type: types.CLOSE_NOTIFICATION,
 });
 
+export const fetch_recording_status_request = () => ({
+    type: types.FETCH_RECORDING_STATUS_REQUEST
+});
+
+export const fetch_recording_status_failure = (error) => ({
+    type: types.FETCH_RECORDING_STATUS_FAILURE,
+    error
+});
+
+export const fetch_recording_status_success = (is_recording_started) => ({
+    type: types.FETCH_RECORDING_STATUS_SUCCESS,
+    is_recording_started
+});
+
 export const add_new_device_info = (new_device_info) => ({ 
     type: types.ADD_NEW_LOG,
     new_device_info,

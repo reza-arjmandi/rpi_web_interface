@@ -51,7 +51,7 @@ const toolbar = (classes, is_record_started) => {
   );
 }
 
-export default function ButtonAppBar({is_record_started}) {
+export default function ButtonAppBar({ is_record_started }) {
   const classes = useStyles();
 
   return (

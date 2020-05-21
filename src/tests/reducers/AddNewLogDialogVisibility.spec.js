@@ -1,5 +1,5 @@
-import AddNewLogDialogVisibility from '../reducers/AddNewLogDialogVisibility';
-import * as types from '../constants/ActionTypes';
+import AddNewLogDialogVisibility from '../../reducers/AddNewLogDialogVisibility';
+import * as types from '../../constants/ActionTypes';
 
 describe('AddNewLogDialogVisibility reducer', () => {
     it('should handle initial state', () => {
