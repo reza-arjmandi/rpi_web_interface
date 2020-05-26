@@ -13,6 +13,28 @@ describe('Notification reducer', () => {
         ).toEqual(initial_state)
     })
 
+    it('should handle FETCH_LOGS_REQUEST', () => {
+        const action = {
+            type: types.FETCH_LOGS_REQUEST,
+        };
+
+        const expected_result = {
+            message: 'Fetching logs...', 
+            type:'info'
+        };
+
+        expect(
+            Notification(undefined, action)
+        ).toEqual(expected_result);
+
+        expect(
+            Notification({
+                message: 'random message', 
+                type:'random type'
+            }, action)
+        ).toEqual(expected_result);
+    })
+
     it('should handle FETCH_LOGS_FAILURE', () => {
         const action = {
             type: types.FETCH_LOGS_FAILURE,
@@ -53,6 +75,24 @@ describe('Notification reducer', () => {
         expect(
             Notification({
                 open: true, 
+                message: 'random message', 
+                type:'random type'
+            }, action)
+        ).toEqual(expected_result);
+    })
+
+    it('should handle FETCH_RECORDING_STATUS_REQUEST', () => {
+        const action = {
+            type: types.FETCH_RECORDING_STATUS_REQUEST,
+        };
+
+        const expected_result = {
+            message: 'Fetching recording status...', 
+            type:'info'
+        };
+
+        expect(
+            Notification({
                 message: 'random message', 
                 type:'random type'
             }, action)
@@ -149,4 +189,5 @@ describe('Notification reducer', () => {
             }, action)
         ).toEqual(expected_result);
     })
+
 });

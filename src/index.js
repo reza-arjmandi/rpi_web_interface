@@ -13,7 +13,6 @@ import reducer from './reducers';
 
 import { 
   fetch_logs,
-  fetch_recording_status 
 } from './api';
 
 const store = createStore(
@@ -23,7 +22,6 @@ const store = createStore(
 ));
 
 store.dispatch(fetch_logs());
-store.dispatch(fetch_recording_status());
 
 ReactDOM.render(
   <React.StrictMode>

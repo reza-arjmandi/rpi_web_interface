@@ -1,6 +1,8 @@
 import {
+    FETCH_LOGS_REQUEST,
     FETCH_LOGS_FAILURE,
     FETCH_LOGS_SUCCESS,
+    FETCH_RECORDING_STATUS_REQUEST,
     FETCH_RECORDING_STATUS_FAILURE,
     FETCH_RECORDING_STATUS_SUCCESS,
     SEND_NEW_LOG_REQUEST,
@@ -15,6 +17,11 @@ const initial_state = {
 
 export default function Notification(state=initial_state, action) {
     switch(action.type) {
+        case FETCH_LOGS_REQUEST:
+            return {
+                message: 'Fetching logs...', 
+                type: 'info'
+            };
         case FETCH_LOGS_FAILURE:
             return {
                 message: `Fetching of logs failed, ${action.error}`, 
@@ -24,6 +31,11 @@ export default function Notification(state=initial_state, action) {
             return {
                 message: 'Fetching of logs succeeded', 
                 type:'success'
+            };
+        case FETCH_RECORDING_STATUS_REQUEST:
+            return {
+                message: 'Fetching recording status...', 
+                type:'info'
             };
         case FETCH_RECORDING_STATUS_FAILURE:
             return {

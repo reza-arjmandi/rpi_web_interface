@@ -22,8 +22,11 @@ export function fetch_logs() {
         .then(
           response => response.json()
         )
-        .then(json =>
-            dispatch(fetch_logs_success(json))
+        .then(json => {
+          dispatch(fetch_logs_success(json))
+          dispatch(fetch_recording_status(json))
+        }
+            
         ).catch(error => 
           dispatch(fetch_logs_failure(error))
         );
@@ -70,8 +73,10 @@ export function add_new_log(device_info) {
       response => response.json()
     )
     .then(
-      json => dispatch(send_new_log_success()
-    )
+      json => {
+        dispatch(send_new_log_success())
+        dispatch(fetch_logs())
+      }
     ).catch(error => 
       dispatch(send_new_log_failure(error))
     );
