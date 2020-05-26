@@ -7,15 +7,20 @@ import LogCardsTable from './containers/LogCardsTable';
 import AddLogButton from './containers/AddLogButton';
 import AddNewLogDialog from './containers/AddNewLogDialog';
 import Notification from './containers/Notification';
+import { SnackbarProvider } from 'notistack';
 
 function App() {
   return (
     <div>
-      <ButtonAppBar />
-      <AddNewLogDialog />
-      <LogCardsTable />
-      <AddLogButton />
-      <Notification />
+      <SnackbarProvider maxSnack={3}>
+      <React.Fragment>
+        <ButtonAppBar />
+        <AddNewLogDialog />
+        <LogCardsTable />
+        <AddLogButton />
+        <Notification />
+      </React.Fragment>
+      </SnackbarProvider>    
     </div>
   );
 }

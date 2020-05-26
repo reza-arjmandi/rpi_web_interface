@@ -22,10 +22,6 @@ export const fetch_logs_success = (response) => ({
     response
 });
 
-export const close_notification = () => ({
-    type: types.CLOSE_NOTIFICATION,
-});
-
 export const fetch_recording_status_request = () => ({
     type: types.FETCH_RECORDING_STATUS_REQUEST
 });
@@ -40,7 +36,15 @@ export const fetch_recording_status_success = (is_recording_started) => ({
     is_recording_started
 });
 
-export const add_new_device_info = (new_device_info) => ({ 
-    type: types.ADD_NEW_LOG,
-    new_device_info,
+export const send_new_log_request = () => ({ 
+    type: types.SEND_NEW_LOG_REQUEST,
+});
+
+export const send_new_log_success = () => ({ 
+    type: types.SEND_NEW_LOG_SUCCESS,
+});
+
+export const send_new_log_failure = (error) => ({ 
+    type: types.SEND_NEW_LOG_FAILURE,
+    error
 });

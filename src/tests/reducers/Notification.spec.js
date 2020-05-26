@@ -4,7 +4,6 @@ import * as types from '../../constants/ActionTypes';
 describe('Notification reducer', () => {
     it('should handle initial state', () => {
         const initial_state = {
-            open: false, 
             message: '', 
             type:''
         };
@@ -21,7 +20,6 @@ describe('Notification reducer', () => {
         };
 
         const expected_result = {
-            open: true, 
             message: 'Fetching of logs failed, this is a error', 
             type:'error'
         };
@@ -32,7 +30,6 @@ describe('Notification reducer', () => {
 
         expect(
             Notification({
-                open: true, 
                 message: 'random message', 
                 type:'random type'
             }, action)
@@ -45,7 +42,6 @@ describe('Notification reducer', () => {
         };
 
         const expected_result = {
-            open: true, 
             message: 'Fetching of logs succeeded', 
             type:'success'
         };
@@ -63,26 +59,6 @@ describe('Notification reducer', () => {
         ).toEqual(expected_result);
     })
 
-    it('should handle CLOSE_NOTIFICATION', () => {
-        const action = {
-            type: types.CLOSE_NOTIFICATION,
-        };
-
-        const initial_state = {
-            open: false, 
-            message: '', 
-            type:''
-        };
-
-        expect(
-            Notification({
-                open: true, 
-                message: 'random message', 
-                type:'random type'
-            }, action)
-        ).toEqual(initial_state);
-    })
-
     it('should handle FETCH_RECORDING_STATUS_FAILURE', () => {
         const action = {
             type: types.FETCH_RECORDING_STATUS_FAILURE,
@@ -90,18 +66,87 @@ describe('Notification reducer', () => {
         };
 
         const expected_result = {
-            open: true, 
             message: `Fetching of recording status failed, ${action.error}`, 
             type:'error'
         };
 
         expect(
             Notification({
-                open: true, 
                 message: 'random message', 
                 type:'random type'
             }, action)
         ).toEqual(expected_result);
     })
 
+    it('should handle FETCH_RECORDING_STATUS_SUCCESS', () => {
+        const action = {
+            type: types.FETCH_RECORDING_STATUS_SUCCESS
+        };
+
+        const expected_result = {
+            message: 'Fetching of recording status succeeded.', 
+            type:'success'
+        };
+
+        expect(
+            Notification({
+                message: 'random message', 
+                type:'random type'
+            }, action)
+        ).toEqual(expected_result);
+    })
+
+    it('should handle SEND_NEW_LOG_REQUEST', () => {
+        const action = {
+            type: types.SEND_NEW_LOG_REQUEST
+        };
+
+        const expected_result = {
+            message: 'Adding new log...',
+            type:'info'
+        };
+
+        expect(
+            Notification({
+                message: 'random message', 
+                type:'random type'
+            }, action)
+        ).toEqual(expected_result);
+    })
+
+    it('should handle SEND_NEW_LOG_FAILED', () => {
+        const action = {
+            type: types.SEND_NEW_LOG_FAILURE
+        };
+
+        const expected_result = {
+            message: `Adding new log was failed, ${action.error}`,
+            type:'error'
+        };
+
+        expect(
+            Notification({
+                message: 'random message', 
+                type:'random type'
+            }, action)
+        ).toEqual(expected_result);
+    })
+
+    it('should handle SEND_NEW_LOG_SUCCESS', () => {
+        const action = {
+            type: types.SEND_NEW_LOG_SUCCESS
+        };
+
+        const expected_result = {
+            message: 'Adding new log succeeded.',
+            type:'success'
+        };
+
+        expect(
+            Notification({
+                message: 'random message', 
+                type:'random type'
+            }, action)
+        ).toEqual(expected_result);
+    })
 });

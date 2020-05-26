@@ -1,37 +1,17 @@
 import React from 'react';
-import Snackbar from '@material-ui/core/Snackbar';
-import MuiAlert from '@material-ui/lab/Alert';
-import { makeStyles } from '@material-ui/core/styles';
-
-function Alert(props) {
-  return <MuiAlert elevation={6} variant="filled" {...props} />;
-}
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    width: '100%',
-    '& > * + *': {
-      marginTop: theme.spacing(2),
-    },
-  },
-}));
+import { useSnackbar } from 'notistack';
 
 export default function Notification(
-    {open, message, type, close_notification}) {
+    {message, type}) {
 
-  const classes = useStyles();
+  const { enqueueSnackbar } = useSnackbar();
+
+  if(message) {
+    enqueueSnackbar(message, { variant: type });
+  }
 
   return (
-    <div className={classes.root}>
-      <Snackbar 
-        open={open} 
-        autoHideDuration={5000}
-        onClose={close_notification}
-        >
-            <Alert onClose={close_notification} severity={type}>
-              {message}
-            </Alert>
-      </Snackbar>
-    </div>
+      <div>
+      </div>
   );
 }

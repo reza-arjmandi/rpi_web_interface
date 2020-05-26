@@ -37,12 +37,6 @@ describe('serial port logger actions', () => {
         });
     })
 
-    it('close_notification should create CLOSE_NOTIFICATION action', () => {
-        expect(actions.close_notification()).toEqual({
-            type: types.CLOSE_NOTIFICATION,
-        });
-    })
-
     it('fetch_recording_status_request should \
 create FETCH_RECORDING_STATUS_REQUEST', 
     () => {
@@ -71,5 +65,24 @@ FETCH_RECORDING_STATUS_SUCCESS', () => {
             is_recording_started: false
         });
     })
+
+    it('send_new_log_request should create SEND_NEW_LOG_REQUEST', () => {
+        expect(actions.send_new_log_request()).toEqual({
+            type: types.SEND_NEW_LOG_REQUEST,
+        });
+    });
+
+    it('send_new_log_success should create SEND_NEW_LOG_SUCCESS', () => {
+        expect(actions.send_new_log_success()).toEqual({
+            type: types.SEND_NEW_LOG_SUCCESS,
+        });
+    });
+
+    it('send_new_log_failure should create SEND_NEW_LOG_FAILURE', () => {
+        expect(actions.send_new_log_failure('this is err')).toEqual({
+            type: types.SEND_NEW_LOG_FAILURE,
+            error: 'this is err'
+        });
+    });
 
 });
