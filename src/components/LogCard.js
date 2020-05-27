@@ -12,6 +12,7 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import { red } from '@material-ui/core/colors';
 import GetAppIcon from '@material-ui/icons/GetApp';
+import Delete from '@material-ui/icons/Delete';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import Usb from '@material-ui/icons/Usb';
@@ -71,11 +72,21 @@ const LogCardContent = (log_file_name) => {
   );
 };
 
-const LogCardActions = (classes, is_expanded, expand_click_handler) => {
+const LogCardActions = (
+  classes, is_expanded, download_click_handler, 
+  delete_click_handler, expand_click_handler) => {
   return (
     <CardActions disableSpacing>
-      <IconButton aria-label="download log file">
+      <IconButton 
+        aria-label="download log file" 
+        onClick={download_click_handler}>
         <GetAppIcon />
+      </IconButton>
+
+      <IconButton 
+        aria-label="delete log"
+        onClick={delete_click_handler}>
+        <Delete />
       </IconButton>
 
       <IconButton
@@ -136,13 +147,23 @@ const LogCardCollapse = (
 
 export default function LogCard({
     device_name, serial_port_driver, log_file_name, baud_rate, flow_control, 
-    parity, stop_bits, character_size, update_log}) {
+    parity, stop_bits, character_size, update_log, delete_log}) {
 
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
+  };
+
+  const handle_download_click = () => {
+
+  };
+
+  const handle_delete_click = () => {
+    delete_log({
+      device_name,
+    });
   };
 
   var log = {
@@ -165,7 +186,9 @@ export default function LogCard({
     <Card className={classes.root}>
       {LogCardHeader(device_name, serial_port_driver)}
       {LogCardContent(log_file_name)}
-      {LogCardActions(classes, expanded, handleExpandClick)}
+      {LogCardActions(
+        classes, expanded, handle_download_click, 
+        handle_delete_click, handleExpandClick)}
       {LogCardCollapse(expanded, device_name, serial_port_driver,
        log_file_name, baud_rate, flow_control, parity, stop_bits, 
        character_size, on_value_change)}

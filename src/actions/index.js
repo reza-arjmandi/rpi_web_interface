@@ -48,3 +48,16 @@ export const insert_or_update_failure = (error) => ({
     type: types.INSERT_OR_UPDATE_LOG_FAILURE,
     error
 });
+
+export const delete_log_request = () => ({ 
+    type: types.DELETE_LOG_REQUEST
+});
+
+export const delete_log_success = () => ({ 
+    type: types.DELETE_LOG_SUCCESS
+});
+
+export const delete_log_failure = (error) => ({ 
+    type: types.DELETE_LOG_FAILURE,
+    error
+});

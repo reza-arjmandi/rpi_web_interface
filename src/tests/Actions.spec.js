@@ -87,4 +87,23 @@ INSERT_OR_UPDATE_LOG_FAILURE', () => {
         });
     });
 
+    it('delete_log_request should create DELETE_LOG_REQUEST', 
+    () => {
+        expect(actions.delete_log_request()).toEqual({
+            type: types.DELETE_LOG_REQUEST
+        });
+    })
+
+    it('delete_log_success should create DELETE_LOG_SUCCESS', () => {
+        expect(actions.delete_log_success()).toEqual({
+            type: types.DELETE_LOG_SUCCESS,
+        });
+    })
+
+    it('delete_log_failure should create DELETE_LOG_FAILURE', () => {
+        expect(actions.delete_log_failure('this is err')).toEqual({
+            type: types.DELETE_LOG_FAILURE,
+            error: 'this is err'
+        });
+    });
 });

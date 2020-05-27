@@ -18,7 +18,8 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function LogCardsGrid({ is_fetching, cards, update_log }) {
+export default function LogCardsGrid({ 
+  is_fetching, cards, update_log, delete_log }) {
   const classes = useStyles();
 
   if(is_fetching) {
@@ -38,7 +39,8 @@ export default function LogCardsGrid({ is_fetching, cards, update_log }) {
                 <LogCard 
                   className={classes.card} 
                   {...card} 
-                  update_log={update_log} />
+                  update_log={update_log}
+                  delete_log={delete_log} />
             </Grid>
         );
       }) : null}

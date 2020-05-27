@@ -7,7 +7,10 @@ import {
     FETCH_RECORDING_STATUS_SUCCESS,
     INSERT_OR_UPDATE_LOG_REQUEST,
     INSERT_OR_UPDATE_LOG_FAILURE,
-    INSERT_OR_UPDATE_LOG_SUCCESS
+    INSERT_OR_UPDATE_LOG_SUCCESS,
+    DELETE_LOG_REQUEST,
+    DELETE_LOG_FAILURE,
+    DELETE_LOG_SUCCESS,
 } from '../constants/ActionTypes';
 
 const initial_state = {
@@ -54,12 +57,27 @@ export default function Notification(state=initial_state, action) {
             };
         case INSERT_OR_UPDATE_LOG_FAILURE:
             return {
-                message: `Insert or update log failed, ${action.error}`,
+                message: `Insert or update of log failed, ${action.error}`,
                 type: 'error'
             };
         case INSERT_OR_UPDATE_LOG_SUCCESS:
             return {
-                message: 'Insert or update log succeeded.',
+                message: 'Insert or update of log succeeded.',
+                type: 'success'
+            };
+        case DELETE_LOG_REQUEST:
+            return {
+                message: 'Deleting log...',
+                type: 'info'
+            };
+        case DELETE_LOG_FAILURE:
+            return {
+                message: `Deleting of log failed, ${action.error}`,
+                type: 'error'
+            };
+        case DELETE_LOG_SUCCESS:
+            return {
+                message: 'Deleting of log succeeded.',
                 type: 'success'
             };
         default:

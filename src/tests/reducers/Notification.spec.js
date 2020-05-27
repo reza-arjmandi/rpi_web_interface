@@ -136,9 +136,9 @@ describe('Notification reducer', () => {
         ).toEqual(expected_result);
     })
 
-    it('should handle SEND_NEW_LOG_REQUEST', () => {
+    it('should handle INSERT_OR_UPDATE_LOG_REQUEST', () => {
         const action = {
-            type: types.SEND_NEW_LOG_REQUEST
+            type: types.INSERT_OR_UPDATE_LOG_REQUEST
         };
 
         const expected_result = {
@@ -154,13 +154,14 @@ describe('Notification reducer', () => {
         ).toEqual(expected_result);
     })
 
-    it('should handle SEND_NEW_LOG_FAILED', () => {
+    it('should handle INSERT_OR_UPDATE_LOG_FAILURE', () => {
         const action = {
-            type: types.SEND_NEW_LOG_FAILURE
+            type: types.INSERT_OR_UPDATE_LOG_FAILURE,
+            error:' this is error'
         };
 
         const expected_result = {
-            message: `Insert or update log failed, ${action.error}`,
+            message: `Insert or update of log failed, ${action.error}`,
             type:'error'
         };
 
@@ -172,13 +173,68 @@ describe('Notification reducer', () => {
         ).toEqual(expected_result);
     })
 
-    it('should handle SEND_NEW_LOG_SUCCESS', () => {
+    it('should handle INSERT_OR_UPDATE_LOG_SUCCESS', () => {
         const action = {
-            type: types.SEND_NEW_LOG_SUCCESS
+            type: types.INSERT_OR_UPDATE_LOG_SUCCESS
         };
 
         const expected_result = {
-            message: 'Insert or update log succeeded.',
+            message: 'Insert or update of log succeeded.',
+            type:'success'
+        };
+
+        expect(
+            Notification({
+                message: 'random message', 
+                type:'random type'
+            }, action)
+        ).toEqual(expected_result);
+    })
+
+    it('should handle DELETE_LOG_REQUEST', () => {
+        const action = {
+            type: types.DELETE_LOG_REQUEST
+        };
+
+        const expected_result = {
+            message: 'Deleting log...',
+            type:'info'
+        };
+
+        expect(
+            Notification({
+                message: 'random message', 
+                type:'random type'
+            }, action)
+        ).toEqual(expected_result);
+    })
+
+    it('should handle DELETE_LOG_FAILURE', () => {
+        const action = {
+            type: types.DELETE_LOG_FAILURE,
+            error: 'this is error'
+        };
+
+        const expected_result = {
+            message: `Deleting of log failed, ${action.error}`,
+            type:'error'
+        };
+
+        expect(
+            Notification({
+                message: 'random message', 
+                type:'random type'
+            }, action)
+        ).toEqual(expected_result);
+    })
+
+    it('should handle DELETE_LOG_SUCCESS', () => {
+        const action = {
+            type: types.DELETE_LOG_SUCCESS,
+        };
+
+        const expected_result = {
+            message: 'Deleting of log succeeded.',
             type:'success'
         };
 
