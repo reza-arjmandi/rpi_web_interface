@@ -142,7 +142,7 @@ describe('Notification reducer', () => {
         };
 
         const expected_result = {
-            message: 'Adding new log...',
+            message: 'Insert or update log...',
             type:'info'
         };
 
@@ -160,7 +160,7 @@ describe('Notification reducer', () => {
         };
 
         const expected_result = {
-            message: `Adding new log was failed, ${action.error}`,
+            message: `Insert or update log failed, ${action.error}`,
             type:'error'
         };
 
@@ -178,7 +178,7 @@ describe('Notification reducer', () => {
         };
 
         const expected_result = {
-            message: 'Adding new log succeeded.',
+            message: 'Insert or update log succeeded.',
             type:'success'
         };
 

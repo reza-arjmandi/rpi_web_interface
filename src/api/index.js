@@ -5,9 +5,9 @@ import {
     fetch_recording_status_request,
     fetch_recording_status_success,
     fetch_recording_status_failure,
-    send_new_log_request,
-    send_new_log_success,
-    send_new_log_failure
+    insert_or_update_log_request,
+    insert_or_update_log_success,
+    insert_or_update_failure
 } from '../actions';
 
 const api_address = 'https://eaba0047-a89a-4dac-8936-ace33835759c.mock.pstmn.io';
@@ -56,7 +56,7 @@ export function insert_or_update_log(device_info) {
 
   return function (dispatch) {
 
-    dispatch(send_new_log_request())
+    dispatch(insert_or_update_log_request())
 
     return fetch(`${api_address}/insert_or_update_log`, {
       method: 'POST',
@@ -74,11 +74,11 @@ export function insert_or_update_log(device_info) {
     )
     .then(
       json => {
-        dispatch(send_new_log_success())
+        dispatch(insert_or_update_log_success())
         dispatch(fetch_logs())
       }
     ).catch(error => 
-      dispatch(send_new_log_failure(error))
+      dispatch(insert_or_update_failure(error))
     );
   }
 }

@@ -5,9 +5,9 @@ import {
     FETCH_RECORDING_STATUS_REQUEST,
     FETCH_RECORDING_STATUS_FAILURE,
     FETCH_RECORDING_STATUS_SUCCESS,
-    SEND_NEW_LOG_REQUEST,
-    SEND_NEW_LOG_FAILURE,
-    SEND_NEW_LOG_SUCCESS
+    INSERT_OR_UPDATE_LOG_REQUEST,
+    INSERT_OR_UPDATE_LOG_FAILURE,
+    INSERT_OR_UPDATE_LOG_SUCCESS
 } from '../constants/ActionTypes';
 
 const initial_state = {
@@ -47,19 +47,19 @@ export default function Notification(state=initial_state, action) {
                 message: 'Fetching of recording status succeeded.',
                 type:'success'
             };
-        case SEND_NEW_LOG_REQUEST:
+        case INSERT_OR_UPDATE_LOG_REQUEST:
             return {
-                message: 'Adding new log...',
+                message: 'Insert or update log...',
                 type:'info'
             };
-        case SEND_NEW_LOG_FAILURE:
+        case INSERT_OR_UPDATE_LOG_FAILURE:
             return {
-                message: `Adding new log was failed, ${action.error}`,
+                message: `Insert or update log failed, ${action.error}`,
                 type: 'error'
             };
-        case SEND_NEW_LOG_SUCCESS:
+        case INSERT_OR_UPDATE_LOG_SUCCESS:
             return {
-                message: 'Adding new log succeeded.',
+                message: 'Insert or update log succeeded.',
                 type: 'success'
             };
         default:

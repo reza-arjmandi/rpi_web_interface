@@ -36,15 +36,15 @@ export const fetch_recording_status_success = (is_recording_started) => ({
     is_recording_started
 });
 
-export const send_new_log_request = () => ({ 
-    type: types.SEND_NEW_LOG_REQUEST,
+export const insert_or_update_log_request = () => ({ 
+    type: types.INSERT_OR_UPDATE_LOG_REQUEST,
 });
 
-export const send_new_log_success = () => ({ 
-    type: types.SEND_NEW_LOG_SUCCESS,
+export const insert_or_update_log_success = () => ({ 
+    type: types.INSERT_OR_UPDATE_LOG_SUCCESS,
 });
 
-export const send_new_log_failure = (error) => ({ 
-    type: types.SEND_NEW_LOG_FAILURE,
+export const insert_or_update_failure = (error) => ({ 
+    type: types.INSERT_OR_UPDATE_LOG_FAILURE,
     error
 });

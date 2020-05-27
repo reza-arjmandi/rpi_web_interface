@@ -66,21 +66,23 @@ FETCH_RECORDING_STATUS_SUCCESS', () => {
         });
     })
 
-    it('send_new_log_request should create SEND_NEW_LOG_REQUEST', () => {
-        expect(actions.send_new_log_request()).toEqual({
-            type: types.SEND_NEW_LOG_REQUEST,
+    it('insert_or_update_log_request should create \
+INSERT_OR_UPDATE_LOG_REQUEST', () => {
+        expect(actions.insert_or_update_log_request()).toEqual({
+            type: types.INSERT_OR_UPDATE_LOG_REQUEST,
         });
     });
 
-    it('send_new_log_success should create SEND_NEW_LOG_SUCCESS', () => {
-        expect(actions.send_new_log_success()).toEqual({
-            type: types.SEND_NEW_LOG_SUCCESS,
+    it('insert_or_update_log_success should create INSERT_OR_UPDATE_LOG_SUCCESS', () => {
+        expect(actions.insert_or_update_log_success()).toEqual({
+            type: types.INSERT_OR_UPDATE_LOG_SUCCESS,
         });
     });
 
-    it('send_new_log_failure should create SEND_NEW_LOG_FAILURE', () => {
-        expect(actions.send_new_log_failure('this is err')).toEqual({
-            type: types.SEND_NEW_LOG_FAILURE,
+    it('insert_or_update_failure should create \
+INSERT_OR_UPDATE_LOG_FAILURE', () => {
+        expect(actions.insert_or_update_failure('this is err')).toEqual({
+            type: types.INSERT_OR_UPDATE_LOG_FAILURE,
             error: 'this is err'
         });
     });
