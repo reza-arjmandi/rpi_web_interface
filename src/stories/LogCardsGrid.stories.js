@@ -2,6 +2,7 @@ import React from 'react';
 
 import LogCardsGrid from '../components/LogCardsGrid';
 import {log_card_data} from './LogCard.stories';
+import {action} from '@storybook/addon-actions';
 
 export default {
     component: LogCardsGrid,
@@ -23,10 +24,14 @@ export const cards_data = {
     ],
 };
 
+export const actions_data = {
+    update_log: action('update_log'),
+}
+
 export const Default = () => {
-    return <LogCardsGrid {...cards_data} />;
+    return <LogCardsGrid {...cards_data} {...actions_data} />;
 };
 
 export const Fetching = () => {
-    return <LogCardsGrid is_fetching={true} />;
+    return <LogCardsGrid is_fetching={true} {...actions_data} />;
 };

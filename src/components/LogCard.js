@@ -16,6 +16,13 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import Usb from '@material-ui/icons/Usb';
 
+import LogCardTextField from './LogCardTextField';
+import BaudRateField from './BaudRateField';
+import FlowControlField from './FlowControlField';
+import ParityField from './ParityField';
+import StopBitsField from './StopBitsField';
+import CharacterSizeField from './CharacterSizeField';
+
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 345,
@@ -87,28 +94,41 @@ const LogCardActions = (classes, is_expanded, expand_click_handler) => {
 
 const LogCardCollapse = (
   is_expanded, device_name, serial_port_driver, log_file_name, baud_rate, 
-  flow_control, parity, stop_bits, character_size) => {
+  flow_control, parity, stop_bits, character_size, on_value_change) => {
   
   return (
     <Collapse in={is_expanded} timeout="auto" unmountOnExit>
       <CardContent>
-        <Typography paragraph>
-          Device Name: {device_name}
-          <br />
-          Serial Port Driver: {serial_port_driver}
-          <br />
-          Log File Name: {log_file_name}
-          <br />
-          Baud Rate: {baud_rate}
-          <br />
-          Flow Control: {flow_control}
-          <br />
-          Parity: {parity}
-          <br />
-          Stop Bits: {stop_bits}
-          <br />
-          Character Size: {character_size}
-        </Typography>
+        <LogCardTextField 
+          id='device_name' 
+          label='Device Name' 
+          default_value={device_name}
+          on_value_change={on_value_change} />
+        <LogCardTextField 
+          id='log_file_name' 
+          label='Log File Name' 
+          default_value={log_file_name}
+          on_value_change={on_value_change} />
+        <LogCardTextField 
+          id='serial_port_driver' 
+          label='Serial port driver' 
+          default_value={serial_port_driver}
+          on_value_change={on_value_change} />
+        <BaudRateField 
+          value={baud_rate}
+          on_value_change={on_value_change} />
+        <FlowControlField 
+          value={flow_control}
+          on_value_change={on_value_change} />
+        <ParityField 
+          value={parity}
+          on_value_change={on_value_change} />
+        <StopBitsField 
+          value={stop_bits}
+          on_value_change={on_value_change} />
+        <CharacterSizeField 
+          default_value={character_size}
+          on_value_change={on_value_change} />
       </CardContent>
     </Collapse>
   );
@@ -116,13 +136,29 @@ const LogCardCollapse = (
 
 export default function LogCard({
     device_name, serial_port_driver, log_file_name, baud_rate, flow_control, 
-    parity, stop_bits, character_size}) {
+    parity, stop_bits, character_size, update_log}) {
 
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
+  };
+
+  var log = {
+    device_name,
+    serial_port_driver,
+    log_file_name,
+    baud_rate,
+    flow_control,
+    parity,
+    stop_bits,
+    character_size
+  };
+  
+  const on_value_change = (item) => {
+    log[item.id] = item.value;
+    update_log(log);
   };
 
   return (
@@ -132,7 +168,7 @@ export default function LogCard({
       {LogCardActions(classes, expanded, handleExpandClick)}
       {LogCardCollapse(expanded, device_name, serial_port_driver,
        log_file_name, baud_rate, flow_control, parity, stop_bits, 
-       character_size)}
+       character_size, on_value_change)}
     </Card>
   );
 }
@@ -146,4 +182,5 @@ LogCard.protoTypes = {
   parity: PropTypes.string.isRequired,
   stop_bits: PropTypes.string.isRequired,
   character_size: PropTypes.string.isRequired,
+  update_log: PropTypes.func.isRequired,
 };

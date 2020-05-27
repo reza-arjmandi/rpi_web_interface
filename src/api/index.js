@@ -52,13 +52,13 @@ export function fetch_recording_status() {
   }
 }
 
-export function add_new_log(device_info) {
+export function insert_or_update_log(device_info) {
 
   return function (dispatch) {
 
     dispatch(send_new_log_request())
 
-    return fetch(`${api_address}/add_new_log`, {
+    return fetch(`${api_address}/insert_or_update_log`, {
       method: 'POST',
       cache: 'no-cache',
       credentials: 'same-origin',

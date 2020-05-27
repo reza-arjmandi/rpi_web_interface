@@ -30,7 +30,8 @@ LogDialogTextField.propTypes = {
     id: PropTypes.string.isRequired,
     label: PropTypes.string.isRequired,
     type: PropTypes.object,
-    default_value: PropTypes.object,
+    default_value: PropTypes.object.isRequired,
+    on_value_change: PropTypes.func.isRequired
 };
 
 LogDialogTextField.defaultProps = {
