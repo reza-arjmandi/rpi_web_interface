@@ -21,64 +21,28 @@ const initial_state = {
 export default function Notification(state=initial_state, action) {
     switch(action.type) {
         case FETCH_LOGS_REQUEST:
+        case FETCH_RECORDING_STATUS_REQUEST:
+        case INSERT_OR_UPDATE_LOG_REQUEST:
+        case DELETE_LOG_REQUEST:
             return {
-                message: 'Fetching logs...', 
+                message: action.description, 
                 type: 'info'
             };
         case FETCH_LOGS_FAILURE:
+        case FETCH_RECORDING_STATUS_FAILURE:
+        case INSERT_OR_UPDATE_LOG_FAILURE:
+        case DELETE_LOG_FAILURE:
             return {
-                message: `Fetching of logs failed, ${action.error}`, 
+                message: `${action.description} ${action.error}`, 
                 type: 'error'
             };
         case FETCH_LOGS_SUCCESS:
-            return {
-                message: 'Fetching of logs succeeded', 
-                type:'success'
-            };
-        case FETCH_RECORDING_STATUS_REQUEST:
-            return {
-                message: 'Fetching recording status...', 
-                type:'info'
-            };
-        case FETCH_RECORDING_STATUS_FAILURE:
-            return {
-                message: `Fetching of recording status failed, ${action.error}`, 
-                type:'error'
-            };
         case FETCH_RECORDING_STATUS_SUCCESS:
-            return {
-                message: 'Fetching of recording status succeeded.',
-                type:'success'
-            };
-        case INSERT_OR_UPDATE_LOG_REQUEST:
-            return {
-                message: 'Insert or update log...',
-                type:'info'
-            };
-        case INSERT_OR_UPDATE_LOG_FAILURE:
-            return {
-                message: `Insert or update of log failed, ${action.error}`,
-                type: 'error'
-            };
         case INSERT_OR_UPDATE_LOG_SUCCESS:
-            return {
-                message: 'Insert or update of log succeeded.',
-                type: 'success'
-            };
-        case DELETE_LOG_REQUEST:
-            return {
-                message: 'Deleting log...',
-                type: 'info'
-            };
-        case DELETE_LOG_FAILURE:
-            return {
-                message: `Deleting of log failed, ${action.error}`,
-                type: 'error'
-            };
         case DELETE_LOG_SUCCESS:
             return {
-                message: 'Deleting of log succeeded.',
-                type: 'success'
+                message: action.description, 
+                type:'success'
             };
         default:
             return state;

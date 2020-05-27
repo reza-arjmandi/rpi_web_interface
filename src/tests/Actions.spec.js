@@ -19,13 +19,15 @@ describe('serial port logger actions', () => {
 
     it('fetch_logs_request should create FETCH_LOGS_REQUEST action', () => {
         expect(actions.fetch_logs_request()).toEqual({
-            type: types.FETCH_LOGS_REQUEST
+            type: types.FETCH_LOGS_REQUEST,
+            description: 'Fetching logs...'
         });
     })
 
     it('fetch_logs_failure should create FETCH_LOGS_FAILURE action', () => {
         expect(actions.fetch_logs_failure("this is a err")).toEqual({
             type: types.FETCH_LOGS_FAILURE,
+            description: 'Fetching of logs failed.',
             error: "this is a err"
         });
     })
@@ -33,6 +35,7 @@ describe('serial port logger actions', () => {
     it('fetch_logs_success should create FETCH_LOGS_SUCCESS action', () => {
         expect(actions.fetch_logs_success("this is a response")).toEqual({
             type: types.FETCH_LOGS_SUCCESS,
+            description: 'Fetching of logs succeeded.',
             response: "this is a response"
         });
     })
@@ -42,6 +45,7 @@ create FETCH_RECORDING_STATUS_REQUEST',
     () => {
         expect(actions.fetch_recording_status_request()).toEqual({
             type: types.FETCH_RECORDING_STATUS_REQUEST,
+            description: 'Fetching recording status...'
         });
     })
 
@@ -49,6 +53,7 @@ create FETCH_RECORDING_STATUS_REQUEST',
 FETCH_RECORDING_STATUS_FAILURE', () => {
         expect(actions.fetch_recording_status_failure('this is err')).toEqual({
             type:types.FETCH_RECORDING_STATUS_FAILURE,
+            description: 'Fetching of recording status failed.',
             error: 'this is err'
         })
     })
@@ -57,11 +62,13 @@ FETCH_RECORDING_STATUS_FAILURE', () => {
 FETCH_RECORDING_STATUS_SUCCESS', () => {
         expect(actions.fetch_recording_status_success(true)).toEqual({
             type: types.FETCH_RECORDING_STATUS_SUCCESS,
+            description: 'Fetching of recording status succeeded.',
             is_recording_started: true
         });
 
         expect(actions.fetch_recording_status_success(false)).toEqual({
             type: types.FETCH_RECORDING_STATUS_SUCCESS,
+            description: 'Fetching of recording status succeeded.',
             is_recording_started: false
         });
     })
@@ -70,12 +77,15 @@ FETCH_RECORDING_STATUS_SUCCESS', () => {
 INSERT_OR_UPDATE_LOG_REQUEST', () => {
         expect(actions.insert_or_update_log_request()).toEqual({
             type: types.INSERT_OR_UPDATE_LOG_REQUEST,
+            description: 'Inserting or updating a log...'
         });
     });
 
-    it('insert_or_update_log_success should create INSERT_OR_UPDATE_LOG_SUCCESS', () => {
+    it('insert_or_update_log_success should create \
+INSERT_OR_UPDATE_LOG_SUCCESS', () => {
         expect(actions.insert_or_update_log_success()).toEqual({
             type: types.INSERT_OR_UPDATE_LOG_SUCCESS,
+            description: 'Inserting or updating of the log succeeded.'
         });
     });
 
@@ -83,6 +93,7 @@ INSERT_OR_UPDATE_LOG_REQUEST', () => {
 INSERT_OR_UPDATE_LOG_FAILURE', () => {
         expect(actions.insert_or_update_failure('this is err')).toEqual({
             type: types.INSERT_OR_UPDATE_LOG_FAILURE,
+            description: 'Inserting or updating of the log failed.',
             error: 'this is err'
         });
     });
@@ -90,19 +101,22 @@ INSERT_OR_UPDATE_LOG_FAILURE', () => {
     it('delete_log_request should create DELETE_LOG_REQUEST', 
     () => {
         expect(actions.delete_log_request()).toEqual({
-            type: types.DELETE_LOG_REQUEST
+            type: types.DELETE_LOG_REQUEST,
+            description: 'Deleting a log...'
         });
     })
 
     it('delete_log_success should create DELETE_LOG_SUCCESS', () => {
         expect(actions.delete_log_success()).toEqual({
             type: types.DELETE_LOG_SUCCESS,
+            description: 'Deleting of the log succeeded.'
         });
     })
 
     it('delete_log_failure should create DELETE_LOG_FAILURE', () => {
         expect(actions.delete_log_failure('this is err')).toEqual({
             type: types.DELETE_LOG_FAILURE,
+            description: 'Deleting of the log failed.',
             error: 'this is err'
         });
     });
