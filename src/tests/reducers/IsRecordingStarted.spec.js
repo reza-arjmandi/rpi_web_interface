@@ -1,67 +1,53 @@
 import IsRecordingStarted from '../../reducers/IsRecordingStarted';
 import * as types from '../../constants/ActionTypes';
+import ExpectGenerator from './ExpectGenerator';
+
+const setup = () => {
+    const expectation = ExpectGenerator(IsRecordingStarted);
+    return {
+        expectation,
+    };
+};
 
 describe('IsRecordingStarted reducer', () => {
 
     it('should handle initial state', () => {
-        expect(
-            IsRecordingStarted(undefined, {})
-        ).toEqual(false);
+        const { expectation } = setup();
+        expectation(undefined, {}, false);
     })
 
     it('shuld handle FETCH_RECORDING_STATUS_REQUEST', () => {
-        const action = {
-            type: types.FETCH_RECORDING_STATUS_REQUEST
-        }
-
-        expect(
-            IsRecordingStarted(false, action)
-        ).toEqual(false);
-
-        expect(
-            IsRecordingStarted(true, action)
-        ).toEqual(true)
+        const { expectation } = setup();
+        const action = { 
+            type: types.FETCH_RECORDING_STATUS_REQUEST 
+        };
+        expectation(false, action, false);
+        expectation(true, action, true);
     })
 
     it('shuld handle FETCH_RECORDING_STATUS_FAILURE', () => {
-        const action = {
-            type: types.FETCH_RECORDING_STATUS_FAILURE
-        }
-
-        expect(
-            IsRecordingStarted(false, action)
-        ).toEqual(false);
-
-        expect(
-            IsRecordingStarted(true, action)
-        ).toEqual(true)
+        const { expectation } = setup();
+        const action = { 
+            type: types.FETCH_RECORDING_STATUS_FAILURE 
+        };
+        expectation(false, action, false);
+        expectation(true, action, true);
     })
 
     it('shuld handle FETCH_RECORDING_STATUS_SUCCESS', () => {
-        const action1 = {
+        const { expectation } = setup();
+        const action1 = { 
             type: types.FETCH_RECORDING_STATUS_SUCCESS,
-            is_recording_started: true
-        }
-
-        expect(
-            IsRecordingStarted(false, action1)
-        ).toEqual(action1.is_recording_started);
-
-        expect(
-            IsRecordingStarted(true, action1)
-        ).toEqual(action1.is_recording_started)
+            is_recording_started: true 
+        };
+        expectation(false, action1, action1.is_recording_started);
+        expectation(true, action1, action1.is_recording_started);
 
         const action2 = {
             type: types.FETCH_RECORDING_STATUS_SUCCESS,
             is_recording_started: false
         }
-
-        expect(
-            IsRecordingStarted(false, action2)
-        ).toEqual(action2.is_recording_started);
-
-        expect(
-            IsRecordingStarted(true, action2)
-        ).toEqual(action2.is_recording_started)
+        expectation(false, action2, action2.is_recording_started);
+        expectation(true, action2, action2.is_recording_started);
     })
 })

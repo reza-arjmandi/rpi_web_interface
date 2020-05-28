@@ -1,5 +1,6 @@
 import Notification from '../../reducers/Notification';
 import * as types from '../../constants/ActionTypes';
+import ExpectGenerator from './ExpectGenerator';
 
 const setup = () => {
 
@@ -49,11 +50,7 @@ const setup = () => {
         };
     };
 
-    const expectation = (state, action, equal_to) => {
-        expect(
-            Notification(state, action)
-        ).toEqual(equal_to)
-    }
+    const expectation = ExpectGenerator(Notification);
 
     const expectation_for_api_actions = (action, expected_result) => {
         const random_state = {

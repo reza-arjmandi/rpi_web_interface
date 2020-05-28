@@ -1,39 +1,30 @@
 import AddNewLogDialogVisibility from '../../reducers/AddNewLogDialogVisibility';
 import * as types from '../../constants/ActionTypes';
+import ExpectGenerator from './ExpectGenerator';
+
+const setup = () => {
+    const expectation = ExpectGenerator(AddNewLogDialogVisibility);
+    return {
+        expectation,
+    };
+};
 
 describe('AddNewLogDialogVisibility reducer', () => {
     it('should handle initial state', () => {
-        expect(
-            AddNewLogDialogVisibility(undefined, {})
-        ).toEqual(false);
+        const { expectation } = setup();
+        expectation(undefined, {}, false);
     })
 
     it('should handle OPEN_ADD_NEW_LOG_DIALOG', () => {
-        expect(
-            AddNewLogDialogVisibility(false, {
-                type: types.OPEN_ADD_NEW_LOG_DIALOG
-            })
-        ).toEqual(true);
-
-        expect(
-            AddNewLogDialogVisibility(true, {
-                type: types.OPEN_ADD_NEW_LOG_DIALOG
-            })
-        ).toEqual(true);
+        const { expectation } = setup();
+        expectation(false, { type: types.OPEN_ADD_NEW_LOG_DIALOG }, true);
+        expectation(true, { type: types.OPEN_ADD_NEW_LOG_DIALOG }, true);
     })
 
     it('should handle CLOSE_ADD_NEW_LOG_DIALOG', () => {
-        expect(
-            AddNewLogDialogVisibility(true, {
-                type: types.CLOSE_ADD_NEW_LOG_DIALOG
-            })
-        ).toEqual(false);
-
-        expect(
-            AddNewLogDialogVisibility(false, {
-                type: types.CLOSE_ADD_NEW_LOG_DIALOG
-            })
-        ).toEqual(false);
+        const { expectation } = setup();
+        expectation(false, { type: types.CLOSE_ADD_NEW_LOG_DIALOG }, false);
+        expectation(true, { type: types.CLOSE_ADD_NEW_LOG_DIALOG }, false);
     })
 
 });
