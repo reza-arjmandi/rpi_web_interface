@@ -27,6 +27,7 @@ export const cards_data = {
 export const actions_data = {
     update_log: action('update_log'),
     delete_log: action('delete_log'),
+    download_log: action('download_log'),
 }
 
 export const Default = () => {

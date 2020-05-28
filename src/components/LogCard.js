@@ -147,7 +147,7 @@ const LogCardCollapse = (
 
 export default function LogCard({
     device_name, serial_port_driver, log_file_name, baud_rate, flow_control, 
-    parity, stop_bits, character_size, update_log, delete_log}) {
+    parity, stop_bits, character_size, update_log, delete_log, download_log}) {
 
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
@@ -157,7 +157,9 @@ export default function LogCard({
   };
 
   const handle_download_click = () => {
-
+    download_log({
+      device_name,
+    });
   };
 
   const handle_delete_click = () => {

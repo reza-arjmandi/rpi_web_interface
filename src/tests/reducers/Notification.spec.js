@@ -79,6 +79,9 @@ const setup = () => {
         types.DELETE_LOG_REQUEST,
         types.DELETE_LOG_FAILURE,
         types.DELETE_LOG_SUCCESS,
+        types.DOWNLOAD_LOG_FILE_REQUEST,
+        types.DOWNLOAD_LOG_FILE_FAILURE,
+        types.DOWNLOAD_LOG_FILE_SUCCESS,
     ];
 
     return {

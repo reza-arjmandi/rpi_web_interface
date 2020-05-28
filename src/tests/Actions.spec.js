@@ -119,5 +119,28 @@ INSERT_OR_UPDATE_LOG_FAILURE', () => {
             description: 'Deleting of the log failed.',
             error: 'this is err'
         });
-    });
+    })
+
+    it('download_log_file_request should create DOWNLOAD_LOG_FILE_REQUEST', 
+    () => {
+        expect(actions.download_log_file_request()).toEqual({
+            type: types.DOWNLOAD_LOG_FILE_REQUEST,
+            description: 'downloading the log file...'
+        });
+    })
+
+    it('download_log_file_success should create DOWNLOAD_LOG_FILE_SUCCESS', () => {
+        expect(actions.download_log_file_success()).toEqual({
+            type: types.DOWNLOAD_LOG_FILE_SUCCESS,
+            description: 'Downloading of the log file succeeded.'
+        });
+    })
+
+    it('download_log_file_failure should create DOWNLOAD_LOG_FILE_FAILURE', () => {
+        expect(actions.download_log_file_failure('this is err')).toEqual({
+            type: types.DOWNLOAD_LOG_FILE_FAILURE,
+            description: 'Downloading of the log file failed.',
+            error: 'this is err'
+        });
+    })
 });

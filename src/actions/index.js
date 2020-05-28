@@ -73,3 +73,19 @@ export const delete_log_failure = (error) => ({
     description: 'Deleting of the log failed.',
     error
 });
+
+export const download_log_file_request = () => ({ 
+    type: types.DOWNLOAD_LOG_FILE_REQUEST,
+    description: 'downloading the log file...'
+});
+
+export const download_log_file_success = () => ({ 
+    type: types.DOWNLOAD_LOG_FILE_SUCCESS,
+    description: 'Downloading of the log file succeeded.'
+});
+
+export const download_log_file_failure = (error) => ({ 
+    type: types.DOWNLOAD_LOG_FILE_FAILURE,
+    description: 'Downloading of the log file failed.',
+    error
+});

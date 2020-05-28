@@ -11,7 +11,12 @@ import {
     delete_log_request,
     delete_log_success,
     delete_log_failure,
+    download_log_file_request,
+    download_log_file_success,
+    download_log_file_failure
 } from '../actions';
+
+import fileDownload from 'js-file-download';
 
 const api_address = 'https://eaba0047-a89a-4dac-8936-ace33835759c.mock.pstmn.io';
 
@@ -113,6 +118,24 @@ export function delete_log(device_name) {
       }
     ).catch(error => 
       dispatch(delete_log_failure(error))
+    );
+  }
+}
+
+export function download_log_file(device) {
+  return function (dispatch) {
+    dispatch(download_log_file_request())
+    return fetch(`${api_address}/download_log_file/${device['device_name']}`)
+    .then(
+      response => response.blob()
+    )
+    .then(
+      data => {
+        fileDownload(data, 'log.txt');
+        dispatch(download_log_file_success());
+      }
+    ).catch(error => 
+      dispatch(download_log_file_failure(error))
     );
   }
 }
