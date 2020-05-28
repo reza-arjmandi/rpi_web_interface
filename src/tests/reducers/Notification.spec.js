@@ -82,6 +82,9 @@ const setup = () => {
         types.DOWNLOAD_LOG_FILE_REQUEST,
         types.DOWNLOAD_LOG_FILE_FAILURE,
         types.DOWNLOAD_LOG_FILE_SUCCESS,
+        types.START_RECORDING_REQUEST,
+        types.START_RECORDING_FAILURE,
+        types.START_RECORDING_SUCCESS,
     ];
 
     return {

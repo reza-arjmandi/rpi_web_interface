@@ -41,7 +41,8 @@ const app_title = (classes) => {
   );
 };
 
-const toolbar = (classes, is_record_started, is_fetching) => {
+const toolbar = (
+  classes, is_record_started, is_fetching, start_recording, stop_recording) => {
   return (
     <Toolbar>
       {menu_button(classes)}
@@ -49,19 +50,22 @@ const toolbar = (classes, is_record_started, is_fetching) => {
       <RecordLogButton 
         is_record_started={is_record_started} 
         is_fetching={is_fetching}
+        start_recording={start_recording}
+        stop_recording={stop_recording}
       />
     </Toolbar>
   );
 }
 
 export default function ButtonAppBar({ 
-  is_fetching, is_record_started }) {
+  is_fetching, is_record_started, start_recording, stop_recording }) {
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
       <AppBar position="static">
-        {toolbar(classes, is_record_started, is_fetching)}
+        {toolbar(classes, is_record_started, is_fetching,
+           start_recording, stop_recording)}
       </AppBar>
     </div>
   );

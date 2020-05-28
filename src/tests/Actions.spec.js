@@ -60,13 +60,15 @@ FETCH_RECORDING_STATUS_FAILURE', () => {
 
     it('fetch_recording_status_success should careate \
 FETCH_RECORDING_STATUS_SUCCESS', () => {
-        expect(actions.fetch_recording_status_success(true)).toEqual({
+        expect(actions.fetch_recording_status_success({
+             is_recording_started: true })).toEqual({
             type: types.FETCH_RECORDING_STATUS_SUCCESS,
             description: 'Fetching of recording status succeeded.',
             is_recording_started: true
         });
 
-        expect(actions.fetch_recording_status_success(false)).toEqual({
+        expect(actions.fetch_recording_status_success({
+            is_recording_started: false })).toEqual({
             type: types.FETCH_RECORDING_STATUS_SUCCESS,
             description: 'Fetching of recording status succeeded.',
             is_recording_started: false
@@ -140,6 +142,31 @@ INSERT_OR_UPDATE_LOG_FAILURE', () => {
         expect(actions.download_log_file_failure('this is err')).toEqual({
             type: types.DOWNLOAD_LOG_FILE_FAILURE,
             description: 'Downloading of the log file failed.',
+            error: 'this is err'
+        });
+    })
+
+    it('start_recording_request should create START_RECORDING_REQUEST', 
+    () => {
+        expect(actions.start_recording_request()).toEqual({
+            type: types.START_RECORDING_REQUEST,
+            description: 'start recording...'
+        });
+    })
+
+    it('start_recording_success should create START_RECORDING_SUCCESS', 
+    () => {
+        expect(actions.start_recording_success()).toEqual({
+            type: types.START_RECORDING_SUCCESS,
+            description: 'start of recording succeeded.'
+        });
+    })
+
+    it('start_recording_failure should create START_RECORDING_FAILURE', 
+    () => {
+        expect(actions.start_recording_failure('this is err')).toEqual({
+            type: types.START_RECORDING_FAILURE,
+            description: 'start of recording failed.',
             error: 'this is err'
         });
     })

@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function RecordLogButton({
-  is_fetching, is_record_started}) {
+  is_fetching, is_record_started, start_recording, stop_recording}) {
   const classes = useStyles();
 
   if(is_fetching) {
@@ -42,6 +42,7 @@ export default function RecordLogButton({
           is_record_started 
           ? <StopIcon /> 
           : <FiberManualRecordIcon color="secondary" />}
+        onClick={is_record_started ? stop_recording : start_recording}
       >
         {is_record_started ? "Stop Recording" : "Start Recording"}
       </Button>
@@ -52,6 +53,8 @@ export default function RecordLogButton({
 RecordLogButton.protoTypes = {
   is_fetching: PropTypes.bool,
   is_record_started: PropTypes.bool,
+  start_recording: PropTypes.func.isRequired,
+  stop_recording: PropTypes.func.isRequired,
 }
 
 RecordLogButton.defaultProps = {

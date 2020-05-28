@@ -36,7 +36,7 @@ export const fetch_recording_status_failure = (error) => ({
     error
 });
 
-export const fetch_recording_status_success = (is_recording_started) => ({
+export const fetch_recording_status_success = ({ is_recording_started }) => ({
     type: types.FETCH_RECORDING_STATUS_SUCCESS,
     description: 'Fetching of recording status succeeded.',
     is_recording_started
@@ -87,5 +87,21 @@ export const download_log_file_success = () => ({
 export const download_log_file_failure = (error) => ({ 
     type: types.DOWNLOAD_LOG_FILE_FAILURE,
     description: 'Downloading of the log file failed.',
+    error
+});
+
+export const start_recording_request = () => ({ 
+    type: types.START_RECORDING_REQUEST,
+    description: 'start recording...'
+});
+
+export const start_recording_success = () => ({ 
+    type: types.START_RECORDING_SUCCESS,
+    description: 'start of recording succeeded.'
+});
+
+export const start_recording_failure = (error) => ({ 
+    type: types.START_RECORDING_FAILURE,
+    description: 'start of recording failed.',
     error
 });

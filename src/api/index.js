@@ -13,7 +13,10 @@ import {
     delete_log_failure,
     download_log_file_request,
     download_log_file_success,
-    download_log_file_failure
+    download_log_file_failure,
+    start_recording_request,
+    start_recording_success,
+    start_recording_failure,
 } from '../actions';
 
 import fileDownload from 'js-file-download';
@@ -127,7 +130,7 @@ export function download_log_file(device) {
     dispatch(download_log_file_request())
     return fetch(`${api_address}/download_log_file/${device['device_name']}`)
     .then(
-      response => response.blob()
+      response => response.json()
     )
     .then(
       data => {
@@ -136,6 +139,24 @@ export function download_log_file(device) {
       }
     ).catch(error => 
       dispatch(download_log_file_failure(error))
+    );
+  }
+}
+
+export function start_recording() {
+  return function (dispatch) {
+    dispatch(start_recording_request())
+    return fetch(`${api_address}/start_recording`)
+    .then(
+      response => response.blob()
+    )
+    .then(
+      json => {
+        dispatch(start_recording_success());
+        dispatch(fetch_recording_status())
+      }
+    ).catch(error => 
+      dispatch(start_recording_failure(error))
     );
   }
 }
