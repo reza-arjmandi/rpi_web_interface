@@ -17,6 +17,9 @@ import {
     START_RECORDING_REQUEST,
     START_RECORDING_FAILURE,
     START_RECORDING_SUCCESS,
+    STOP_RECORDING_REQUEST,
+    STOP_RECORDING_FAILURE,
+    STOP_RECORDING_SUCCESS,
 } from '../constants/ActionTypes';
 
 const initial_state = {
@@ -32,6 +35,7 @@ export default function Notification(state=initial_state, action) {
         case DELETE_LOG_REQUEST:
         case DOWNLOAD_LOG_FILE_REQUEST:
         case START_RECORDING_REQUEST:
+        case STOP_RECORDING_REQUEST:
             return {
                 message: action.description, 
                 type: 'info'
@@ -42,6 +46,7 @@ export default function Notification(state=initial_state, action) {
         case DELETE_LOG_FAILURE:
         case DOWNLOAD_LOG_FILE_FAILURE:
         case START_RECORDING_FAILURE:
+        case STOP_RECORDING_FAILURE:
             return {
                 message: `${action.description} ${action.error}`, 
                 type: 'error'
@@ -52,6 +57,7 @@ export default function Notification(state=initial_state, action) {
         case DELETE_LOG_SUCCESS:
         case DOWNLOAD_LOG_FILE_SUCCESS:
         case START_RECORDING_SUCCESS:
+        case STOP_RECORDING_SUCCESS:
             return {
                 message: action.description, 
                 type:'success'

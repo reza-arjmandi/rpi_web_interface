@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import ButtonAppBar from '../components/ButtonAppBar';
-import { start_recording } from '../api'
+import { set_recording } from '../api'
 
 const map_state_to_props = state => ({
     is_fetching: state.IsFetchingRecordingStatus,
@@ -8,7 +8,8 @@ const map_state_to_props = state => ({
 });
 
 const map_dispatch_to_props = dispatch => ({
-    start_recording: () => dispatch(start_recording()),
+    start_recording: () => dispatch(set_recording({ status: true })),
+    stop_recording: () => dispatch(set_recording({ status: false })),
 });
 
 export default connect(

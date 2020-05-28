@@ -17,6 +17,9 @@ import {
     start_recording_request,
     start_recording_success,
     start_recording_failure,
+    stop_recording_request,
+    stop_recording_success,
+    stop_recording_failure,
 } from '../actions';
 
 import fileDownload from 'js-file-download';
@@ -143,20 +146,37 @@ export function download_log_file(device) {
   }
 }
 
-export function start_recording() {
+export function set_recording(status) {
   return function (dispatch) {
-    dispatch(start_recording_request())
-    return fetch(`${api_address}/start_recording`)
+    status['status'] 
+      ? dispatch(start_recording_request()) 
+      : dispatch(stop_recording_request());
+
+    return fetch(`${api_address}/set_recording`, {
+      method: 'POST',
+      cache: 'no-cache',
+      credentials: 'same-origin',
+      headers: {
+        'Content-type': 'application/json'
+      },
+      redirect: 'follow',
+      referrerPolicy: 'no-referrer',
+      body: JSON.stringify(status)
+    })
     .then(
-      response => response.blob()
+      response => response.json()
     )
     .then(
       json => {
-        dispatch(start_recording_success());
+        status['status'] 
+        ? dispatch(start_recording_success()) 
+        : dispatch(stop_recording_success());
         dispatch(fetch_recording_status())
       }
     ).catch(error => 
-      dispatch(start_recording_failure(error))
+      status['status'] 
+        ? dispatch(start_recording_failure(error)) 
+        : dispatch(stop_recording_failure(error))
     );
   }
 }

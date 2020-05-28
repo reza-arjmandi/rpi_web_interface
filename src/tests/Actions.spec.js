@@ -170,4 +170,29 @@ INSERT_OR_UPDATE_LOG_FAILURE', () => {
             error: 'this is err'
         });
     })
+
+    it('stop_recording_request should create STOP_RECORDING_REQUEST', 
+    () => {
+        expect(actions.stop_recording_request()).toEqual({
+            type: types.STOP_RECORDING_REQUEST,
+            description: 'stop recording...'
+        });
+    })
+
+    it('stop_recording_success should create STOP_RECORDING_SUCCESS', 
+    () => {
+        expect(actions.stop_recording_success()).toEqual({
+            type: types.STOP_RECORDING_SUCCESS,
+            description: 'stop of recording succeeded.'
+        });
+    })
+
+    it('stop_recording_failure should create STOP_RECORDING_FAILURE', 
+    () => {
+        expect(actions.stop_recording_failure('this is err')).toEqual({
+            type: types.STOP_RECORDING_FAILURE,
+            description: 'stop of recording failed.',
+            error: 'this is err'
+        });
+    })
 });

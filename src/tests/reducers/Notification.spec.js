@@ -85,6 +85,9 @@ const setup = () => {
         types.START_RECORDING_REQUEST,
         types.START_RECORDING_FAILURE,
         types.START_RECORDING_SUCCESS,
+        types.STOP_RECORDING_REQUEST,
+        types.STOP_RECORDING_FAILURE,
+        types.STOP_RECORDING_SUCCESS,
     ];
 
     return {

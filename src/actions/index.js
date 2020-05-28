@@ -105,3 +105,19 @@ export const start_recording_failure = (error) => ({
     description: 'start of recording failed.',
     error
 });
+
+export const stop_recording_request = () => ({ 
+    type: types.STOP_RECORDING_REQUEST,
+    description: 'stop recording...'
+});
+
+export const stop_recording_success = () => ({ 
+    type: types.STOP_RECORDING_SUCCESS,
+    description: 'stop of recording succeeded.'
+});
+
+export const stop_recording_failure = (error) => ({ 
+    type: types.STOP_RECORDING_FAILURE,
+    description: 'stop of recording failed.',
+    error
+});
