@@ -41,33 +41,39 @@ const app_title = (classes) => {
   );
 };
 
-const toolbar = (classes, is_record_started) => {
+const toolbar = (classes, is_record_started, is_fetching) => {
   return (
     <Toolbar>
       {menu_button(classes)}
       {app_title(classes)}
-      <RecordLogButton is_record_started={is_record_started} />
+      <RecordLogButton 
+        is_record_started={is_record_started} 
+        is_fetching={is_fetching}
+      />
     </Toolbar>
   );
 }
 
-export default function ButtonAppBar({ is_record_started }) {
+export default function ButtonAppBar({ 
+  is_fetching, is_record_started }) {
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
       <AppBar position="static">
-        {toolbar(classes, is_record_started)}
+        {toolbar(classes, is_record_started, is_fetching)}
       </AppBar>
     </div>
   );
 }
 
 ButtonAppBar.protoTypes = {
+  is_fetching: PropTypes.bool,
   is_record_started: PropTypes.bool,
 }
 
 ButtonAppBar.defaultProps = {
+  is_fetching: false,
   is_record_started: false,
 };
 

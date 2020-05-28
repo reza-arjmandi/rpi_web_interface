@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import ButtonAppBar from '../components/ButtonAppBar';
 
 const map_state_to_props = state => ({
+    is_fetching: state.IsFetchingRecordingStatus,
     is_record_started: state.IsRecordingStarted
 });
 
