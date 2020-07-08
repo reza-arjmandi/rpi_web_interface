@@ -18,7 +18,7 @@ const device_name_field = (on_value_change) => {
   );
 };
 
-const log_file_name_field = (on_value_change) => {
+const log_file_field = (on_value_change) => {
   return (
     <Grid item xs={6}>
       <LogFileNameField on_value_change={on_value_change} />
@@ -26,7 +26,7 @@ const log_file_name_field = (on_value_change) => {
   );
 };
 
-const serial_port_driver_field = (on_value_change) => {
+const driver_field = (on_value_change) => {
   return (
     <Grid item xs={6}>
       <SerialPortDriverField on_value_change={on_value_change} />
@@ -78,8 +78,8 @@ export default function NewDeviceInfoPage({ on_value_change }) {
     return (
       <Grid container spacing={1}>
         {device_name_field(on_value_change)}
-        {log_file_name_field(on_value_change)}
-        {serial_port_driver_field(on_value_change)}
+        {log_file_field(on_value_change)}
+        {driver_field(on_value_change)}
         {baud_rate_field(on_value_change)}
         {flow_control_field(on_value_change)}
         {parity_field(on_value_change)}

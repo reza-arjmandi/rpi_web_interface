@@ -6,7 +6,7 @@ import {
 export default function Logs(state=[], action) {
     switch(action.type) {
         case FETCH_LOGS_SUCCESS:
-            return action.response.cards;
+            return action.response;
         case FETCH_LOGS_FAILURE:
         default:
             return state;

@@ -60,11 +60,11 @@ const LogCardHeader = (title, sub_header) => {
   )
 };
 
-const LogCardContent = (log_file_name) => {
+const LogCardContent = (log_file) => {
   return (
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
-          Log file: {log_file_name}
+          Log file: {log_file}
           <br />
           ...
         </Typography>
@@ -104,7 +104,7 @@ const LogCardActions = (
 };
 
 const LogCardCollapse = (
-  is_expanded, device_name, serial_port_driver, log_file_name, baud_rate, 
+  is_expanded, device_name, driver, log_file, baud_rate, 
   flow_control, parity, stop_bits, character_size, on_value_change) => {
   
   return (
@@ -116,14 +116,14 @@ const LogCardCollapse = (
           default_value={device_name}
           on_value_change={on_value_change} />
         <LogCardTextField 
-          id='log_file_name' 
+          id='log_file' 
           label='Log File Name' 
-          default_value={log_file_name}
+          default_value={log_file}
           on_value_change={on_value_change} />
         <LogCardTextField 
-          id='serial_port_driver' 
+          id='driver' 
           label='Serial port driver' 
-          default_value={serial_port_driver}
+          default_value={driver}
           on_value_change={on_value_change} />
         <BaudRateField 
           value={baud_rate}
@@ -146,7 +146,7 @@ const LogCardCollapse = (
 };
 
 export default function LogCard({
-    device_name, serial_port_driver, log_file_name, baud_rate, flow_control, 
+    device_name, driver, log_file, baud_rate, flow_control, 
     parity, stop_bits, character_size, update_log, delete_log, download_log}) {
 
   const classes = useStyles();
@@ -170,8 +170,8 @@ export default function LogCard({
 
   var log = {
     device_name,
-    serial_port_driver,
-    log_file_name,
+    driver,
+    log_file,
     baud_rate,
     flow_control,
     parity,
@@ -181,18 +181,18 @@ export default function LogCard({
   
   const on_value_change = (item) => {
     log[item.id] = item.value;
-    update_log(log);
+    update_log(device_name, log);
   };
 
   return (
     <Card className={classes.root}>
-      {LogCardHeader(device_name, serial_port_driver)}
-      {LogCardContent(log_file_name)}
+      {LogCardHeader(device_name, driver)}
+      {LogCardContent(log_file)}
       {LogCardActions(
         classes, expanded, handle_download_click, 
         handle_delete_click, handleExpandClick)}
-      {LogCardCollapse(expanded, device_name, serial_port_driver,
-       log_file_name, baud_rate, flow_control, parity, stop_bits, 
+      {LogCardCollapse(expanded, device_name, driver,
+       log_file, baud_rate, flow_control, parity, stop_bits, 
        character_size, on_value_change)}
     </Card>
   );
@@ -200,8 +200,8 @@ export default function LogCard({
 
 LogCard.protoTypes = {
   device_name: PropTypes.string.isRequired,
-  serial_port_driver: PropTypes.string.isRequired,
-  log_file_name: PropTypes.string.isRequired,
+  driver: PropTypes.string.isRequired,
+  log_file: PropTypes.string.isRequired,
   baud_rate: PropTypes.string.isRequired,
   flow_control: PropTypes.string.isRequired,
   parity: PropTypes.string.isRequired,

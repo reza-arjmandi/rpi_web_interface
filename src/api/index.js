@@ -24,7 +24,7 @@ import {
 
 import fileDownload from 'js-file-download';
 
-const api_address = 'https://eaba0047-a89a-4dac-8936-ace33835759c.mock.pstmn.io';
+const api_address = 'http://127.0.0.1:8000';
 
 export function fetch_logs() {
   
@@ -32,7 +32,7 @@ export function fetch_logs() {
   
       dispatch(fetch_logs_request())
   
-      return fetch(`${api_address}/logs`)
+      return fetch(`${api_address}/serial_ports/`)
         .then(
           response => response.json()
         )
@@ -66,13 +66,15 @@ export function fetch_recording_status() {
   }
 }
 
-export function insert_or_update_log(device_info) {
+export function add_new_log(device_info) {
+  
+  console.log(JSON.stringify(device_info))
 
   return function (dispatch) {
 
     dispatch(insert_or_update_log_request())
 
-    return fetch(`${api_address}/insert_or_update_log`, {
+    return fetch(`${api_address}/serial_ports/`, {
       method: 'POST',
       cache: 'no-cache',
       credentials: 'same-origin',
@@ -97,14 +99,14 @@ export function insert_or_update_log(device_info) {
   }
 }
 
-export function delete_log(device_name) {
-
+export function update_log(device_name, device_info) {
+  console.log(JSON.stringify(device_info))
   return function (dispatch) {
 
-    dispatch(delete_log_request())
+    dispatch(insert_or_update_log_request())
 
-    return fetch(`${api_address}/delete_log`, {
-      method: 'POST',
+    return fetch(`${api_address}/serial_ports/${device_name}/`, {
+      method: 'PUT',
       cache: 'no-cache',
       credentials: 'same-origin',
       headers: {
@@ -112,13 +114,39 @@ export function delete_log(device_name) {
       },
       redirect: 'follow',
       referrerPolicy: 'no-referrer',
-      body: JSON.stringify(device_name)
+      body: JSON.stringify(device_info)
     })
     .then(
       response => response.json()
     )
     .then(
       json => {
+        dispatch(insert_or_update_log_success())
+        dispatch(fetch_logs())
+      }
+    ).catch(error => 
+      dispatch(insert_or_update_failure(error))
+    );
+  }
+}
+
+export function delete_log(device_info) {
+  return function (dispatch) {
+
+    dispatch(delete_log_request())
+
+    return fetch(`${api_address}/serial_ports/${device_info.device_name}`, {
+      method: 'DELETE',
+      cache: 'no-cache',
+      credentials: 'same-origin',
+      headers: {
+        'Content-type': 'application/json'
+      },
+      redirect: 'follow',
+      referrerPolicy: 'no-referrer',
+    })
+    .then(
+      () => {
         dispatch(delete_log_success())
         dispatch(fetch_logs())
       }
