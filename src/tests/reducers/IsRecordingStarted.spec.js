@@ -38,16 +38,16 @@ describe('IsRecordingStarted reducer', () => {
         const { expectation } = setup();
         const action1 = { 
             type: types.FETCH_RECORDING_STATUS_SUCCESS,
-            is_recording_started: true 
+            is_recording: true 
         };
-        expectation(false, action1, action1.is_recording_started);
-        expectation(true, action1, action1.is_recording_started);
+        expectation(false, action1, action1.is_recording);
+        expectation(true, action1, action1.is_recording);
 
         const action2 = {
             type: types.FETCH_RECORDING_STATUS_SUCCESS,
-            is_recording_started: false
+            is_recording: false
         }
-        expectation(false, action2, action2.is_recording_started);
-        expectation(true, action2, action2.is_recording_started);
+        expectation(false, action2, action2.is_recording);
+        expectation(true, action2, action2.is_recording);
     })
 })

@@ -53,7 +53,7 @@ export function fetch_recording_status() {
 
     dispatch(fetch_recording_status_request())
 
-    return fetch(`${api_address}/recording_status`)
+    return fetch(`${api_address}/recording/`)
       .then(
         response => response.json()
       )
@@ -176,12 +176,12 @@ export function download_log_file(device) {
 
 export function set_recording(status) {
   return function (dispatch) {
-    status['status'] 
+    status['is_recording'] 
       ? dispatch(start_recording_request()) 
       : dispatch(stop_recording_request());
 
-    return fetch(`${api_address}/set_recording`, {
-      method: 'POST',
+    return fetch(`${api_address}/recording/`, {
+      method: 'PUT',
       cache: 'no-cache',
       credentials: 'same-origin',
       headers: {
@@ -196,13 +196,13 @@ export function set_recording(status) {
     )
     .then(
       json => {
-        status['status'] 
+        status['is_recording'] 
         ? dispatch(start_recording_success()) 
         : dispatch(stop_recording_success());
         dispatch(fetch_recording_status())
       }
     ).catch(error => 
-      status['status'] 
+      status['is_recording'] 
         ? dispatch(start_recording_failure(error)) 
         : dispatch(stop_recording_failure(error))
     );

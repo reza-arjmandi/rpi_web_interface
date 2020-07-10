@@ -61,17 +61,17 @@ FETCH_RECORDING_STATUS_FAILURE', () => {
     it('fetch_recording_status_success should careate \
 FETCH_RECORDING_STATUS_SUCCESS', () => {
         expect(actions.fetch_recording_status_success({
-             is_recording_started: true })).toEqual({
+             is_recording: true })).toEqual({
             type: types.FETCH_RECORDING_STATUS_SUCCESS,
             description: 'Fetching of recording status succeeded.',
-            is_recording_started: true
+            is_recording: true
         });
 
         expect(actions.fetch_recording_status_success({
-            is_recording_started: false })).toEqual({
+            is_recording: false })).toEqual({
             type: types.FETCH_RECORDING_STATUS_SUCCESS,
             description: 'Fetching of recording status succeeded.',
-            is_recording_started: false
+            is_recording: false
         });
     })
 

@@ -36,10 +36,10 @@ export const fetch_recording_status_failure = (error) => ({
     error
 });
 
-export const fetch_recording_status_success = ({ is_recording_started }) => ({
+export const fetch_recording_status_success = ({ is_recording }) => ({
     type: types.FETCH_RECORDING_STATUS_SUCCESS,
     description: 'Fetching of recording status succeeded.',
-    is_recording_started
+    is_recording
 });
 
 export const insert_or_update_log_request = () => ({ 
