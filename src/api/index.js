@@ -159,13 +159,13 @@ export function delete_log(device_info) {
 export function download_log_file(device) {
   return function (dispatch) {
     dispatch(download_log_file_request())
-    return fetch(`${api_address}/download_log_file/${device['device_name']}`)
+    return fetch(`${api_address}/log_file/${device['device_name']}/content/`)
     .then(
-      response => response.json()
+      response => response.blob()
     )
     .then(
       data => {
-        fileDownload(data, 'log.txt');
+        fileDownload(data, `${device['device_name']}_log.txt`);
         dispatch(download_log_file_success());
       }
     ).catch(error => 

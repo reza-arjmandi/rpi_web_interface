@@ -59,7 +59,6 @@ export default function AddNewLogDialog({ on_close, open, add_new_log }) {
 
   var new_log = {
     device_name: "", 
-    log_file: "", 
     driver: "",
     baud_rate: 9600, 
     flow_control: "none", 
@@ -73,7 +72,6 @@ export default function AddNewLogDialog({ on_close, open, add_new_log }) {
 
   const on_add = (event) => {
     if(new_log.device_name === "" 
-    || new_log.log_file === "" 
     || new_log.driver === "") {
       return;
     }

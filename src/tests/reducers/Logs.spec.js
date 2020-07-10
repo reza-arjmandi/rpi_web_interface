@@ -24,7 +24,7 @@ describe('Logs reducer', () => {
         ];
         const action = {
             type: types.FETCH_LOGS_SUCCESS,
-            response: {cards: logs}
+            response: logs
         };
         expectation([], action, logs);
         expectation(['card2', 'card3'], action, logs);
